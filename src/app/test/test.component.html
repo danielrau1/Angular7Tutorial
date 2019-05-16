@@ -1,0 +1,80 @@
+<!--[1.1]-->
+{{name}}<br>
+{{name.length}}<br>
+{{name.toUpperCase()}}<br>
+
+<!--[1.2]-->
+{{greetUser()}}<br>
+
+<!--[1.3]-->
+{{siteUrl}}<br>
+
+<!--[1.4]-->
+<input [id]="myId"  [disabled]="isDisabled" type="text" value="Daniel" >
+
+<!--[1.5a]-->
+<h3 [class]="successClass" >Part [1.5a] class binding</h3>
+<!--[1.5b]-->
+<h3 [class.text-danger]="hasError" >Part [1.5b] conditional class binding</h3>
+<!--[1.5c]-->
+<h3 [ngClass]="messageClasses" >Part [1.5c] multiple class binding</h3>
+
+
+<!--[1.6a] Style binding-->
+<h3 [style.color]="'orange'">Style binding [1.6a]</h3>
+<!--[1.6b] conditionl style binding-->
+<h3 [style.color]="hasError ? 'red' : 'green' ">[1.6b] conditionl style binding</h3>
+<!--[1.6c] conditional property style binding -->
+<h3 [style.color]="highlightColor" >[1.6c] conditional property style binding</h3>
+<!--[1.6d] multiple style binding -->
+<h3 [ngStyle]="titleStyles" >[1.6d] multiple style binding</h3>
+
+<!--[1.7a] Event binding-->
+<button (click)="onClick($event)" >[1.7a] Event Binding</button>
+{{greeting}}<br>
+<!--[1.7b] Event binding with template statement-->
+<button (click)="greeting2 = '[1.7b] Event Binding with template statement'" >[1.7b] Event Binding with template statement</button>
+{{greeting2}}<br>
+
+<!--[1.8] Template reference variables-->
+<input #myInput type="text" >
+<button (click) = "logMessage(myInput.value)" >[1.8]</button>
+<br><br>
+
+<!--[1.9] Two way binding-->
+<h3>[1.9] Two way binding: {{name2}}</h3>
+<input  [(ngModel)]="name2" type="text" >
+
+<!--[1.10a] ngIf Directive-->
+<h3 *ngIf="true" > [1.10a] ngIf = true</h3>
+<!--[1.10b] ngIf Directive with assigned property-->
+<h3 *ngIf="displayName; else elseBlock">[1.10b] ngIf Directive with assigned property</h3>
+<ng-template #elseBlock>
+  <h3>[1.10b] the displayName property is false</h3>
+</ng-template>
+
+<!--[1.11a] ngSwitch Directive-->
+<div [ngSwitch] = "color" >
+  <div *ngSwitchCase="'red'" >[1.11a] You picked red</div>
+  <div *ngSwitchCase="'blue'" >[1.11a] You picked blue</div>
+</div>
+
+<!--[1.12a] ngFor Directive-->
+<h3>[1.12a] ngFor Directive</h3>
+<div *ngFor="let color of colors; index as i; first as f">
+  <h4>{{f}} {{i}} {{color}}</h4>
+</div>
+
+<!--[2.1d]-->
+<h4>{{"Hello " + parentData}}</h4>
+
+
+<!--[2.2b]-->
+<button (click)="fireEvent()" >[2.2b] Send Event</button>
+
+<!--[2.3b]-->
+<h4>[2.3b]Pipes</h4>
+<h5>{{name4 | lowercase}}</h5>
+<h5>{{message | titlecase}}</h5>
+<h5>{{name4 | slice:3:5}}</h5>
+<h5>{{person | json}}</h5>
